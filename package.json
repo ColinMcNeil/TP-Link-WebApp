@@ -1,0 +1,22 @@
+{
+  "name": "tp-link-webapp",
+  "version": "1.0.0",
+  "description": "A web app for tp-link smarthome",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ColinMcNeil/TP-Link-WebApp.git"
+  },
+  "author": "Colin McNeil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ColinMcNeil/TP-Link-WebApp/issues"
+  },
+  "homepage": "https://github.com/ColinMcNeil/TP-Link-WebApp#readme",
+  "dependencies": {
+    "tplink-cloud-api": "^0.1.3"
+  }
+}
