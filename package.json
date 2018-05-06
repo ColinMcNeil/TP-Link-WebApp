@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "node index.js",
-    "dev": "nuxt"
+    "dev": "nuxt",
+    "generate": "nuxt generate",
+    "build:gh-pages": "cross-env DEPLOY_ENV=GH_PAGES nuxt build",
+    "generate:gh-pages": "cross-env DEPLOY_ENV=GH_PAGES nuxt generate"
   },
   "repository": {
     "type": "git",
