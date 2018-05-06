@@ -23,7 +23,6 @@ module.exports = {
         }
     },
     plugins: [
-        '~/plugins/vue-google-auth',
         '~/plugins/vue-cookie',
     ],
     build: {
