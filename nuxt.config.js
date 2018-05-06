@@ -14,12 +14,6 @@ module.exports = {
             google: {
                 client_id: '811800195268-dcspgc96q1rt4kdp1sgk7nmemsg745fv.apps.googleusercontent.com'
             },
-        },
-        redirect: {
-            login: process.env.DEPLOY_ENV === 'GH_PAGES' ? '/TP-Link-WebApp/login' : '/login',
-            logout: '/',
-            callback: process.env.DEPLOY_ENV === 'GH_PAGES' ? '/TP-Link-WebApp/login' : '/login',
-            user: '/'
         }
     },
     plugins: [
