@@ -12,8 +12,10 @@ import { setContext, getLocation, getRouteData } from './utils'
 import { createStore } from './store.js'
 
 /* Plugins */
+import nuxt_plugin_templatesplugin7d1723f7_3a0f3b2c from 'nuxt_plugin_templatesplugin7d1723f7_3a0f3b2c' // Source: ./templates.plugin.7d1723f7.js
 import nuxt_plugin_axios_ba3d9082 from 'nuxt_plugin_axios_ba3d9082' // Source: ./axios.js
 import nuxt_plugin_vuegoogleauth_4a9b28bf from 'nuxt_plugin_vuegoogleauth_4a9b28bf' // Source: ..\\plugins\\vue-google-auth
+import nuxt_plugin_vuecookie_41e86efe from 'nuxt_plugin_vuecookie_41e86efe' // Source: ..\\plugins\\vue-cookie
 import nuxt_plugin_plugin_5c5bc7a4 from 'nuxt_plugin_plugin_5c5bc7a4' // Source: ./auth\\plugin.js
 
 
@@ -153,8 +155,10 @@ async function createApp (ssrContext) {
 
   // Plugin execution
   
+  if (typeof nuxt_plugin_templatesplugin7d1723f7_3a0f3b2c === 'function') await nuxt_plugin_templatesplugin7d1723f7_3a0f3b2c(app.context, inject)
   if (typeof nuxt_plugin_axios_ba3d9082 === 'function') await nuxt_plugin_axios_ba3d9082(app.context, inject)
   if (typeof nuxt_plugin_vuegoogleauth_4a9b28bf === 'function') await nuxt_plugin_vuegoogleauth_4a9b28bf(app.context, inject)
+  if (typeof nuxt_plugin_vuecookie_41e86efe === 'function') await nuxt_plugin_vuecookie_41e86efe(app.context, inject)
   if (typeof nuxt_plugin_plugin_5c5bc7a4 === 'function') await nuxt_plugin_plugin_5c5bc7a4(app.context, inject)
   
 

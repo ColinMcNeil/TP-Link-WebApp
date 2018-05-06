@@ -5,7 +5,8 @@ module.exports = {
     },
     modules: [
         '@nuxtjs/axios',
-        '@nuxtjs/auth'
+        '@nuxtjs/auth',
+        'nuxt-fontawesome'
     ],
     auth: {
         strategies: {
@@ -13,22 +14,23 @@ module.exports = {
                 client_id: '811800195268-dcspgc96q1rt4kdp1sgk7nmemsg745fv.apps.googleusercontent.com'
             },
         }
-        /*sessionName: 'TPLink-Webapp',
-        secretKey: process.env.SECRET_KEY,
-        oauthHost: 'apps.googleusercontent.com',
-        oauthClientID: '811800195268-dcspgc96q1rt4kdp1sgk7nmemsg745fv',
-        oauthClientSecret: process.env.SECRET,
-        authorizationPath:'/login',
-        onLogout: (req, res) => {
-            // do something after logging out
-        },
-        fetchUser: (accessToken) => {
-            // do something to return the user
-            const user = User.findByToken(accessToken)
-            return user
-        }*/
     },
     plugins: [
-        '~/plugins/vue-google-auth'
-    ]
+        '~/plugins/vue-google-auth',
+        '~/plugins/vue-cookie',
+    ],
+    build: {
+        extend(config) {
+            config.node = {
+                fs: 'empty',
+            }
+        }
+    },
+    fontawesome: {
+        imports: [
+            {
+                set: '@fortawesome/fontawesome-free-solid'
+            },
+        ]
+    }
 }

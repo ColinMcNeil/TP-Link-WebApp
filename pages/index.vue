@@ -1,36 +1,49 @@
 <template>
 <div>
-    <h1>Hello world!</h1>
-    <input type="text" placeholder="Username" v-model="username"/>
-    <input type="text" placeholder="Password" v-model="password"/>
-    <button v-on:click="login">Login</button>
-    <div v-for="device in deviceList" :key="device.deviceId">
-        <div>{{JSON.stringingify(device)}}</div>
+    <loginheader/>
+    
+    <div class="controls">
+        <device-list/>
+        <deviceControl v-if="$store.state.selected.device" />
+        
+        
     </div>
+    
 
 </div>
 
 </template>
 <script>
     import Vue from 'vue'
-    import {Client} from  'tplink-smarthome-api'
-    const client = new Client();
-    client.startDiscovery().on('device-new', (device) => {
-        device.getSysInfo().then(console.log);
-    });
-  export default {
-    authenticated:true,
-    data:function(){
-        return {deviceList:[],username:'user@email.com',password:'***'}
-    },
-    methods: {
-      async login () {
-          let myTPLink = await tplink.login(this.usermame, this.password)
-          this.deviceList = await myTPLink.getDeviceList()
-      },
-      logout () {
-        // customise the redirrect url
-      }
+    import loginheader from '../components/header'
+    import deviceList from '../components/deviceList'
+    import deviceControl from '../components/deviceControl'
+    export default {
+        authenticated:true,
+        components:{loginheader, deviceList,deviceControl},
+        methods: {
+
+        }
     }
-  }
 </script> 
+<style>
+html,body{
+        margin: 0;
+        background-color: #e2e1e0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<style scoped>
+    .controls{
+        width:100%;
+        margin-top:3em;
+        position: absolute;
+        padding-top:3em;
+        display:flex;
+    }
+
+
+
+    
+</style>
