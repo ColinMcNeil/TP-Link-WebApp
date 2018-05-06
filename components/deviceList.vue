@@ -37,12 +37,12 @@ export default {
 </script>
 <style scoped>
     .deviceList{
-        position: absolute;
-        width:40%;
+        flex: 0 0 40%;
+        min-width:300px;
         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
         background-color:white;
-        margin-left:1em;
         border-radius: 3px;
+        padding: 0.4em;
     }
     .title{
         border-bottom: solid rgb(230,230,230) 2px;
@@ -50,7 +50,7 @@ export default {
     .deviceListing{
         font-size:2em;
         display:flex;
-        padding:5px;
+        padding: 0.4em;
         transition:ease 0.3s all;
     }
     .deviceListing:hover{

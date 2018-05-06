@@ -14,6 +14,12 @@ const createStore = () => {
                 state.deviceList = payload.deviceList;
                 
             },
+            TPLinkLogout(state) {
+                state.TPLink = {};
+                state.deviceList = [];
+                state.selected = {};
+
+            },
             select(state, selected) {
                 state.selected = selected;
                 state.type= {

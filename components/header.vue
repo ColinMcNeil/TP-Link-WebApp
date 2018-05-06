@@ -39,10 +39,10 @@ export default {
             this.loggedIn=true;
         },
         logout () {
-            this.deviceList=[];
             this.loggedIn=false;
             this.username=''
             this.password=''
+            this.$store.commit('TPLinkLogout')
         },
         showLogin(){
             if(this.loggedIn)return this.logout()
@@ -70,6 +70,7 @@ export default {
         font-size:2em;
         background-color:green;
         width:3em;
+        padding: 0.2em;
         transform:translate(0.5em,0.5em);
         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
         /*flex: 0 0 4em;*/

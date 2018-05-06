@@ -7,6 +7,7 @@
                 <h1>{{state.selected.device.alias}}</h1>
                 
             </div>
+            <transition name="fade" mode="out-in">
             <div class="control" v-if="state.type.model==='LB100'">
                 <p>LB100 Smart Bulb</p>
                 <input type="range" min="1" max="100" value="50" class="brightness" id="myRange" v-model="brightness">
@@ -16,6 +17,8 @@
                     <div class="setBrightness" v-bind:style="{backgroundColor:getBackgroundColor()}" v-on:click="setBrightness">Set Brightness to {{brightness}}</div>
                 </div>
             </div>
+            </transition>
+            <transition name="fade" mode="out-in">
             <div class="control" v-if="state.type.model==='LB130'">
                 <p>LB130 Smart Bulb</p>
                 <div class="setContainer">
@@ -29,6 +32,8 @@
                 </div>
                 
             </div>
+            </transition>
+            <transition name="fade" mode="out-in">
             <div class="control" v-if="state.type.model==='HS100'">
                 <p>HS100 Smart Plug</p>
                 <div class="setContainer">
@@ -36,9 +41,12 @@
                     <div v-if="on" class="offOn off"  v-on:click="turnOff">turn off</div>
                 </div>
             </div>
+            </transition>
+            <transition name="fade" mode="out-in">
             <div class="control" v-if="state.type.model==='HS110'">
                 <p>HS110 Smart Plug</p>
             </div>
+            </transition>
         </div>
   </div>
 
@@ -176,15 +184,18 @@ input[type=range].brightness:focus::-ms-fill-upper {
 <style scoped>
     
     .device{
-        position: absolute;
-        width:40%;
+        flex:0 0 40%;
+        align-self:flex-end;
+        min-width:300px;
         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        border-radius: 3px;
         background-color:white;
         padding:10px;
-        right: 1em;
+        
     }
     .header{
         display:flex;
+        border-bottom: solid rgb(230,230,230) 2px;
     }
     .deviceIcon{
         font-size:2em;
@@ -202,9 +213,12 @@ input[type=range].brightness:focus::-ms-fill-upper {
         padding:5px;
         transition:ease 0.3s all;
         margin-right:2em;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        border-radius: 1px;
     }
     .offOn:hover{
         cursor: pointer;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     }
     .on{
         background-color:rgb(68, 122, 59);
@@ -221,9 +235,19 @@ input[type=range].brightness:focus::-ms-fill-upper {
 
     .setBrightness{
         padding:5px;
+        transition:ease 0.3s all;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        border-radius: 1px;
     }
     .setBrightness:hover{
         cursor: pointer;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    }
+    .fade-enter-active, .fade-leave-active {
+        transition:ease opacity .3s;
+    }
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0;
     }
 </style>
 
