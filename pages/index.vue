@@ -32,7 +32,7 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
 html,body{
         margin: 0;
-        background-color: #e2e1e0;
+        background-color: #efefef;
         width: 100%;
         height: 100%;
         font-family: 'Josefin Sans';
@@ -44,9 +44,8 @@ html,body{
         max-width:1200px;
         left:50%;
         transform:translateX(-50%);
-        margin-top:3em;
+        margin-top:8em;
         position: absolute;
-        padding-top:3em;
         display:flex;
         flex-wrap:wrap;
         justify-content: space-around;

@@ -60,6 +60,10 @@ export default {
     .deviceListing *{
         margin-right:5px;
     }
+    .deviceListing.title:hover{
+        background-color:white;
+        cursor: default;
+    }
 </style>
 
 

@@ -1,12 +1,16 @@
 <template>
     <div>
         <div class="headerBar">
-            <div class="accountControl" v-on:click="showLogin" v-bind:class="{loggedIn:loggedIn,expanded:loginShown}">{{loggedIn?'Logout':'Login'}}</div>
-            <div v-show="loginShown" class="loginFields">
-                <input class="loginField username" type="text" placeholder="Username" v-model="username"/>
-                <input class="loginField password" type="text" placeholder="Password" v-model="password"/>
-                <font-awesome-icon icon="check-square" class="check" v-on:click="login"/>
+            <div class="accountControl" v-on:click="showLogin" v-bind:class="{loggedIn:loggedIn,expanded:loginShown}">
+
+                <div class="loginButton">{{loggedIn?'Logout':'Login'}}</div>
+                <div v-show="loginShown" class="loginFields">
+                    <input class="loginField username" type="text" placeholder="Username" v-model="username"/>
+                    <input class="loginField password" type="password" placeholder="Password" v-model="password"/>
+                    <font-awesome-icon icon="check-square" class="check" v-on:click="login"/>
+                </div>
             </div>
+            
         </div>
     </div>
 </template>
@@ -57,25 +61,25 @@ export default {
     
     .headerBar{
         background: rgb(21,17,89);
-        background: linear-gradient(90deg, rgba(21,17,89,1) 0%, rgba(0,147,255,1) 100%);
+        background: linear-gradient(90deg, #0c695e 0%, #00796a 100%);
         position:fixed;
-        height: 3em;
         width: 100%;
         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-        display:flex;
+        color:white;
         margin-top:0;
+        
     }
     .accountControl{
         transition:ease 0.3s all;
         font-size:2em;
-        background-color:green;
-        width:3em;
+        background-color:#009688;
         padding: 0.2em;
         transform:translate(0.5em,0.5em);
         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-        /*flex: 0 0 4em;*/
-        width:80%;
-        max-width: 4em;
+        display:flex;
+        width:33%;
+        flex-wrap:wrap;
+        min-width: 200px;
         margin-right:1em;
     }
     .accountControl:hover{
@@ -85,18 +89,9 @@ export default {
     .loggedIn{
         background-color:red;
     }
-    .loggedIn:hover{
-
-        
-    }
-    .expanded{
-        /*flex: 0 0 20em;*/
-        max-width: 20em;
-    }
     .loginFields{
         position: relative;
-        transform: translate(-120%,50%);
-
+        padding:5px;
     }
     .loginField{
         background-color:rgba(255,255,255,0.2);
@@ -105,9 +100,16 @@ export default {
         padding:5px;
         font-size:1.1rem;
         margin-right:5px;
+        min-width: 120px;
+        
     }
     .loginField:focus{
         background-color:rgba(255,255,255,0.3);
+    }
+    .loginButton{
+        flex-basis:25%;
+        width:25%;
+        padding:5px;
     }
     .check{
         font-size:1.5rem;
@@ -122,6 +124,11 @@ export default {
         transform:translateY(10%);
         color:rgb(0,80,0);
         cursor: pointer;
+    }
+    @media only screen and (max-width: 1200px) {
+        .expanded .loginButton{
+            display:none;
+        }
     }
     
 </style>
