@@ -87,7 +87,7 @@ export default {
         cursor: pointer;
     }
     .loggedIn{
-        background-color:red;
+        background-color: #b25555;
     }
     .loginFields{
         position: relative;
