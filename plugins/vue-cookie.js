@@ -1,3 +1,3 @@
-import Vue from 'vue'
-import VueCookie from 'vue-cookie';
-Vue.use(VueCookie);
+import Vue from "vue"
+import VueCookie from "vue-cookie"
+Vue.use(VueCookie)
