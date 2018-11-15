@@ -38,7 +38,6 @@ const createStore = () => {
     },
     actions: {
       toggleLogin(context) {
-        console.log("toggle")
         if (context.state.TPLink) return context.commit("TPLinkLogout")
         context.commit("showLogin")
       }
