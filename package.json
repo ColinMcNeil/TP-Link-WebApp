@@ -4,11 +4,11 @@
   "description": "A web app for tp-link smarthome",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js",
     "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
     "generate": "nuxt generate",
-    "build:gh-pages": "cross-env DEPLOY_ENV=GH_PAGES nuxt build",
-    "generate:gh-pages": "cross-env DEPLOY_ENV=GH_PAGES nuxt generate"
+    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
   },
   "repository": {
     "type": "git",
@@ -36,6 +36,7 @@
     "vue-cookie": "^1.1.4"
   },
   "devDependencies": {
-    "cross-env": "^5.1.4"
+    "cross-env": "^5.1.4",
+    "push-dir": "^0.4.1"
   }
 }
