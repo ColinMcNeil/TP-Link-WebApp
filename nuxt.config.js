@@ -2,7 +2,8 @@ module.exports = {
   //plugins: ['~/plugins/vue-google-auth'],
   router: {
     //middleware: ['auth'],
-    base: process.env.DEPLOY_ENV === "GH_PAGES" ? "/TP-Link-WebApp/" : ""
+    // base: process.env.DEPLOY_ENV === "GH_PAGES" ? "/TP-Link-WebApp/" : ""
+    base: "/TP-Link-WebApp/"
   },
   modules: [
     "@nuxtjs/axios",
