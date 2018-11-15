@@ -2,17 +2,21 @@
   <div>
     <form class="container" autocomplete="on">
       <button class="closeBar" @click="$store.commit('hideLogin')">X</button>
+      <label for="email">Email</label>
       <input
         v-model="username"
         class="loginField username"
         type="email"
         name="email"
+        autocomplete="email"
         placeholder="Email"
       />
+      <label for="password">Password</label>
       <input
         v-model="password"
         class="loginField password"
         type="password"
+        name="password"
         placeholder="Password"
       />
       <div class="loginButton" @click="login">
@@ -70,6 +74,7 @@ export default {
 </script>
 
 <style scoped>
+
 .container {
   background: rgb(21, 17, 89);
   background: linear-gradient(90deg, #0c695e 0%, #00796a 100%);
@@ -90,6 +95,11 @@ export default {
 
 .container * {
   margin-bottom: 1em;
+}
+
+.container label {
+  font-size: 1.5rem;
+  margin-bottom: 0.3em;
 }
 
 .closeBar {
