@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form class="container" autocomplete="on">
+    <form class="container" autocomplete="on" action="javascript:void(0);">
       <button class="closeBar" @click="$store.commit('hideLogin')">X</button>
       <label for="email">Email</label>
       <input
@@ -19,15 +19,12 @@
         name="password"
         placeholder="Password"
       />
-      <div class="loginButton" @click="login">
-        Login
-        <font-awesome-icon icon="check-square" class="check" />
-      </div>
+      <input type="submit" class="loginButton" value="Login" @click="login" />
     </form>
   </div>
 </template>
 <script>
-import tplink from "tplink-cloud-api"
+import { login } from "tplink-cloud-api"
 import uuidv4 from "uuid/v4"
 export default {
   data: () => ({
@@ -49,7 +46,7 @@ export default {
   },
   methods: {
     async login() {
-      let myTPLink = await tplink.login(this.username, this.password, this.UUID)
+      let myTPLink = await login(this.username, this.password, this.UUID)
       let deviceList = await myTPLink.getDeviceList()
       this.$store.commit("TPLinkLogin", {
         TPLink: myTPLink,
@@ -74,7 +71,6 @@ export default {
 </script>
 
 <style scoped>
-
 .container {
   background: rgb(21, 17, 89);
   background: linear-gradient(90deg, #0c695e 0%, #00796a 100%);
@@ -146,7 +142,10 @@ export default {
 }
 .loginButton {
   padding: 5px;
+  font-size: 2rem;
   display: flex;
+  border: none;
+  outline: none;
   justify-content: center;
   transition: ease 0.2s all;
   background-color: rgb(255, 255, 255);
@@ -155,18 +154,8 @@ export default {
 }
 .loginButton:hover {
   cursor: pointer;
-  color: rgb(54, 184, 54);
-}
-.check {
-  font-size: 2rem;
-  margin-left: 1em;
-  color: rgb(0, 50, 0);
-  transform: translateY(50%);
-  transition: ease 0.3s all;
-}
-.loginButton:hover .check {
-  color: rgb(0, 80, 0);
-  cursor: pointer;
+  color: rgb(134, 255, 134);
+  background-color: rgb(139, 139, 139);
 }
 @media only screen and (max-width: 1200px) {
   .expanded .loginButton {

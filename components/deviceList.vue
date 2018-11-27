@@ -64,6 +64,13 @@ export default {
   border: solid black 2px;
   padding: 0.5em 1em;
   font-size: 16px;
+  box-sizing: border-box;
+  transition: ease all 0.3s;
+}
+.title button:hover {
+  cursor: pointer;
+  border-color: rgb(106, 201, 106);
+  background-color: rgb(106, 201, 106);
 }
 .deviceListing {
   font-size: 2em;

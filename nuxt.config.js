@@ -1,12 +1,9 @@
 module.exports = {
   router: {
     //May need to change this depending on your deployment
-    base: process.env.NODE_ENV === "development" ? "" : "/TP-Link-WebApp/" 
+    base: process.env.NODE_ENV === "development" ? "" : "/TP-Link-WebApp/"
   },
-  modules: [
-    "@nuxtjs/axios",
-    "nuxt-fontawesome"
-  ],
+  modules: ["@nuxtjs/axios", "nuxt-fontawesome"],
   plugins: ["~/plugins/vue-cookie"],
   build: {
     extend(config) {
@@ -18,7 +15,8 @@ module.exports = {
   fontawesome: {
     imports: [
       {
-        set: "@fortawesome/fontawesome-free-solid"
+        set: "@fortawesome/free-solid-svg-icons",
+        icons: ["fas"]
       }
     ]
   }
