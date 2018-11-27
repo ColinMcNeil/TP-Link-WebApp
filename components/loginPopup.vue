@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form class="container" autocomplete="on" action="javascript:void(0);">
+    <form class="container" autocomplete="on" @submit.prevent="login">
       <button class="closeBar" @click="$store.commit('hideLogin')">X</button>
       <label for="email">Email</label>
       <input
@@ -19,7 +19,7 @@
         name="password"
         placeholder="Password"
       />
-      <input type="submit" class="loginButton" value="Login" @click="login" />
+      <input type="submit" class="loginButton" value="Login" />
     </form>
   </div>
 </template>
