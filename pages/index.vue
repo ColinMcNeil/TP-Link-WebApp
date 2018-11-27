@@ -1,5 +1,11 @@
 <template>
   <div>
+    <a href="https://github.com/colinmcneil/TP-Link-WebApp/">
+      <img 
+      style="position: absolute; top: 0; left: 0; border: 0;" 
+      src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" 
+      alt="Fork me on GitHub">
+    </a>
     <div class="controls">
       <device-list />
       <transition name="slide">
