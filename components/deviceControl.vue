@@ -51,17 +51,12 @@
         </div>
       </transition>
       <transition name="fade" mode="out-in">
-        <div v-if="state.type.model === 'HS100'" class="control">
-          <p>HS100 Smart Plug</p>
+        <div v-if="deviceType === 'IOT.SMARTPLUGSWITCH'" class="control">
+          <p>{{ state.selected.device.deviceName }}</p>
           <div class="setContainer">
             <div v-if="!on" class="offOn on" @click="turnOn">turn on</div>
             <div v-if="on" class="offOn off" @click="turnOff">turn off</div>
           </div>
-        </div>
-      </transition>
-      <transition name="fade" mode="out-in">
-        <div v-if="state.type.model === 'HS110'" class="control">
-          <p>HS110 Smart Plug</p>
         </div>
       </transition>
     </div>
@@ -72,11 +67,19 @@ export default {
   data: function() {
     let state = this.$store.state
     return {
-      state: state,
+      state,
       info: "",
       brightness: 50,
       on: false
     }
+  },
+  computed: {
+    deviceType() {
+      return this.state.selected.device.deviceType
+    }
+  },
+  async mounted() {
+    this.on = await this.state.selected.isOn()
   },
   methods: {
     getBackgroundColor() {
@@ -84,29 +87,33 @@ export default {
         (this.brightness / 100) * 205}, 50)`
     },
     async turnOn() {
-      if (this.state.type.model == "LB100")
-        this.state.selected.transition_light_state(1, undefined)
-      else if (this.state.type.model == "LB130")
-        this.state.selected.transition_light_state(
-          1,
-          undefined,
-          undefined,
-          undefined
-        )
-      else if (this.state.type.model == "HS100") this.state.selected.powerOn()
+      if (this.deviceType === "IOT.SMARTBULB") {
+        if (this.state.type.model == "LB130")
+          this.state.selected.transition_light_state(
+            1,
+            undefined,
+            undefined,
+            undefined
+          )
+        else this.state.selected.transition_light_state(1, undefined)
+      } else {
+        this.state.selected.powerOn()
+      }
       this.on = true
     },
     async turnOff() {
-      if (this.state.type.model == "LB100")
-        this.state.selected.transition_light_state(0, undefined)
-      else if (this.state.type.model == "LB130")
-        this.state.selected.transition_light_state(
-          0,
-          undefined,
-          undefined,
-          undefined
-        )
-      else if (this.state.type.model == "HS100") this.state.selected.powerOff()
+      if (this.deviceType === "IOT.SMARTBULB") {
+        if (this.state.type.model == "LB130")
+          this.state.selected.transition_light_state(
+            0,
+            undefined,
+            undefined,
+            undefined
+          )
+        else this.state.selected.transition_light_state(0, undefined)
+      } else {
+        this.state.selected.powerOff()
+      }
       this.on = false
     },
     setBrightness() {

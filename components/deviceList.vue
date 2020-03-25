@@ -16,8 +16,11 @@
         <div v-if="device.deviceName.includes('Bulb')" class="deviceIcon">
           <font-awesome-icon icon="lightbulb" />
         </div>
-        <div v-if="device.deviceName.includes('Plug')" class="deviceIcon">
+        <div v-else-if="device.deviceName.includes('Plug')" class="deviceIcon">
           <font-awesome-icon icon="plug" />
+        </div>
+        <div v-else class="deviceIcon">
+          <font-awesome-icon icon="question-circle" />
         </div>
         <div class="name">{{ device.alias }}</div>
       </div>
@@ -37,6 +40,12 @@ export default {
       switch (model) {
         case "HS100":
           this.$store.commit("select", state.TPLink.getHS100(alias))
+          break
+        case "HS105":
+          this.$store.commit("select", state.TPLink.getHS100(alias))
+          break
+        case "HS110":
+          this.$store.commit("select", state.TPLink.getHS110(alias))
           break
         case "LB100":
           this.$store.commit("select", state.TPLink.getLB100(alias))
