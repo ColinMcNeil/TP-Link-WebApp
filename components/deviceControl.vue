@@ -36,6 +36,31 @@
         </div>
       </transition>
       <transition name="fade" mode="out-in">
+        <div v-if="state.type.model === 'KL110'" class="control">
+          <p>KL110 Smart Bulb</p>
+          <input
+            id="myRange"
+            v-model="brightness"
+            type="range"
+            min="1"
+            max="100"
+            value="50"
+            class="brightness"
+          />
+          <div class="setContainer">
+            <div v-if="!on" class="offOn on" @click="turnOn">turn on</div>
+            <div v-if="on" class="offOn off" @click="turnOff">turn off</div>
+            <div
+              :style="{ backgroundColor: getBackgroundColor() }"
+              class="setBrightness"
+              @click="setBrightness"
+            >
+              Set Brightness to {{ brightness }}
+            </div>
+          </div>
+        </div>
+      </transition>
+      <transition name="fade" mode="out-in">
         <div v-if="state.type.model === 'LB130'" class="control">
           <p>LB130 Smart Bulb</p>
           <div class="setContainer">

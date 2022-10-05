@@ -50,6 +50,9 @@ export default {
         case "LB100":
           this.$store.commit("select", state.TPLink.getLB100(alias))
           break
+        case "KL110":
+          this.$store.commit("select", state.TPLink.getLB100(alias))
+          break
       }
     }
   }
